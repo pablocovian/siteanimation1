@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+:root {
+  --c1: #0000ff; /* Blue */
+  --c2: #ff00ff; /* Pink */
+  --c3: #800080; /* Purple */
+  --c4: #000000; /* Black */
+}
+
+@-webkit-keyframes progress {
+  from {
+    --progress: 0%;
+  }
+  to {
+    --progress: 100%;
+  }
+}
+
+@keyframes progress {
+  from {
+    --progress: 0%;
+  }
+  to {
+    --progress: 100%;
+  }
+}
+
+.circle {
+  --progress: 60%;
+  background: conic-gradient(at center, var(--c1) var(--progress), var(--c4) var(--progress), var(--c2) calc(var(--progress) + 20%), var(--c3) calc(var(--progress) + 30%), var(--c3) calc(var(--progress) + 50%), transparent, transparent, transparent, transparent);
+  -webkit-animation: progress 4s linear infinite;
+  animation: progress 4s linear infinite;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(circle at center, transparent 65%, var(--c4) 65%);
+  mask: radial-gradient(circle at center, transparent 65%, var(--c4) 65%);
+  position: absolute;
+  inset: 0;
+}
+
+.circle:nth-child(2) {
+  inset: 6vmin;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.circle:nth-child(3) {
+  inset: 12vmin;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.container {
+  filter: drop-shadow(0 0 1vmin var(--c4));
+  position: relative;
+  width: 60vmin; /* Increased size */
+  aspect-ratio: 1;
+}
+
+.container:after {
+  content: "The future of appointment setting";
+  font-weight: bold;
+  position: absolute;
+  font-size: 3vmin; /* Adjusted size */
+  inset: 0;
+  color: var(--c2);
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  display: grid;
+  place-items: center;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Times New Roman", serif;
+  background: white;
+  color: var(--c1);
+  display: grid;
+  place-items: center;
+}
